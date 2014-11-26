@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Click2Buy</title>
+<link type="text/css" rel="stylesheet" href="index/css/bootstrap.css"/>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script>
+  
+  // When the browser is ready...
+  $(function() {
+	  $(function() {
+
+		  var availableTags = [
+		      "Moto g",
+		      "Moto x",
+		      "Samsung Galaxy",
+		      "Apple",
+		      "Sony",
+		      "Micromax"
+		    ];
+		    $( "#search" ).autocomplete({
+		      source: availableTags
+		    });
+		  });
+    // Setup form validation on the #register-form element
+    $("#register-form").validate({
+    
+        // Specify the validation rules
+        rules: {
+            firstname: "required",
+            lastname: "required",
+			phone: "required",
+			password:"required",
+			cpassword:"required",
+			mobile:{
+				required: true,
+				minlength: 10,
+			},
+            email: {
+                required: true,
+                email: true,
+            },
+            password: {
+
+                required: true,
+                minlength: 5,
+				
+            },
+			address:"required",
+			cpassword:{
+				equalTo: "#password",
+			}
+        },
+        
+        // Specify the validation error messages
+        messages: {
+            firstname: "Please enter your first name",
+            lastname: "Please enter your last name",
+            password: {
+                required: "Please provide a password",
+                minlength: "Your password must be at least 5 characters long"
+            },
+            email: "Please enter a valid email address",
+            mobile: "Please enter valid Phone number",
+			cpassword:"Confirm Password Not matching",
+			address:"Please enter your address"
+			
+
+        },
+        
+        submitHandler: function(form) {
+            form.submit();
+        }
+		//==
+    });
+    $("#login-form").validate({
+        
+        // Specify the validation rules
+        rules: {
+          
+			password:"required",
+            email: {
+                required: "Email is Required",
+                email: true,
+            }
+        },
+        
+        // Specify the validation error messages
+        messages: {
+            password: {
+                required: "Please provide a password",
+            },
+            email: "Please enter a valid email address"
+        },
+        
+        submitHandler: function(form) {
+            form.submit();
+        }
+		//==
+    });	
+	
+  });
+</script>
+<style type="text/css">
+ .error
+  {
+    color: red;
+  }
+.navbar {   	
+   	background-image: url("banner.png");
+	background-size:cover;
+	background-repeat: no-repeat;
+    height: 120px;
+    text-align: right;
+}
+.navbar-nav {
+	display: inline-block;
+	float: none;
+	
+	vertical-align: middle;
+	padding: 13px;
+}
+h2{
+    margin: 0px;     
+    color: #666;
+    padding-top: 90px;
+    font-size: 52px;
+    font-family: "trebuchet ms", sans-serif;    
+}
+.item{
+    background: #333;    
+    text-align: center;
+    height: 300px;
+}
+.carousel{
+    margin-top: 20px;
+}
+.bs-example{
+	float: center;
+	width: 100%;
+	height: 650px;
+
+}
+#body {
+	background-image: url("blue1.jpg");
+	background-size:cover;
+	background-repeat: no-repeat;
+	height: 500px;
+}
+
+.row {
+	background-color: #F3F3F3;
+}
+#myCarousel,#slide,#img1{
+
+	height:650px;
+}
+</style>
+</head>
+<body >
+<div class="modal fade" id="myModal" tabinex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+    	<div class="modal-content">
+        	<div class="modal-header">
+            	<h4>Login here...</h4>
+            </div>
+            <div class="modal-body">
+            	<form action="" method="post" id="login-form" novalidate="novalidate">
+					<label>Email</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="email" class="span4" required /><br/><br/>
+					<label>Password</label>&nbsp;
+					<input type="password" class="span4" required/><br/><br/>
+					<input type="submit" name="submit" value="Login" class="btn btn-success">
+					<button type="reset" class="btn">Clear</button>
+				</form>
+            </div>
+            <div class="modal-footer">
+            	<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+         </div>
+     </div>
+</div>
+<div class="modal fade" id="myModal2" tabinex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4>Items in your Cart</h4>
+           </div>
+           <div class="modal-body">
+            <form>
+				<table>
+				<col width="200">
+				<col width="60">
+				<col width="140">
+				<col width="140">
+				<col width="140">
+				<tr><th><center>Item</center></th><th><center>QTY</center></th><th><center>Price</center></th><th><center>Delivery Details</center></th><th><center>Total</center></th>
+				</table><br/><br/>
+				<a href="payment.html" ><button type="submit" class="btn btn-success">Place Order</button></a>
+				<a href="index.html" style="text-decoration:none"><button type="reset" class="btn">Continue Shopping</button></a>
+		 </form>
+           </div>
+           <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+           </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal1" tabinex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+    	<div class="modal-content">
+        	<div class="modal-header">
+            	<h4>Register Here...</h4>
+            </div>
+            <div class="modal-body">
+            	<form action="" method="post" id="register-form" novalidate="novalidate">
+					<table>
+					<tr><td><h5><font face="Comic Sans MS">First name&nbsp;</font></h5></td><td> <input type="text" name="firstname" id="firstname" class="span4"></td><tr>
+					<tr><tr><td><h5><font face="Comic Sans MS">Last name&nbsp;</font></h5> </td><td> <input type="text" name="lastname" id="lastname" class="span4"></td><tr>
+					<tr><tr><td><h5><font face="Comic Sans MS">password&nbsp;</font></h5>  </td><td> <input type="password" name="password" id="password" class="span4"></td><tr>
+					<tr><tr><td><h5><font face="Comic Sans MS">Confirm password&nbsp;</font></h5>  </td><td> <input type="password" name="cpassword" id="cpassword" class="span4"></td><tr>
+					<tr><tr><td><h5><font face="Comic Sans MS">Email&nbsp;</font></h5> </td><td> <input type="email" name="email" class="span4"></td><tr>
+					<tr><tr><td><h5><font face="Comic Sans MS">Address&nbsp;</font></h5> </td><td> <textarea name="address" id="address" rows="5" cols="20" class="span4"></textarea></td><tr>
+					<tr><tr><td><h5><font face="Comic Sans MS">Mobile&nbsp;</font></h5>  </td><td> <input type="tel" name="mobile" id="mobile" min="8999999991" class="span4"></td><tr>
+					</table><br/><br/>
+					<input type="submit" name="submit" value="Register" class="btn btn-success"> <button type="reset" class="btn">Clear</button>
+				</form>
+            </div>
+            <div class="modal-footer">
+            	<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+         </div>
+     </div>
+</div>
+<div class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="index.html" class="navbar-brand"><img src="logo.png" width="300" height="100" alt=""/></a>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li><a data-toggle="modal" href="index.html"><font color="white">HOME</font></a></li>
+				 <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" style='text-decoration:none;'><font color="white">Products</font> <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="mobile.html">Mobiles</a></li>
+                            <li><a href="mobileaccessories.html">Mobile Accessories</a></li>
+                            <li><a href="cameras.html">Cameras</a></li>
+                           
+                        </ul>
+                    </li>
+				<li><a data-toggle="modal" href="#myModal1" id="register"><font color="white">REGISTER</font></a></li>
+				<li><a data-toggle="modal" href="#myModal" ><font color="white">LOGIN</font></a></li>
+				<li><a data-toggle="modal" href="#myModal2"><font color="white">CART</font></a></li>
+				<li><a data-toggle="modal" href="#"><font color="white">CONTACT US</font></a></li>
+			</ul>
+			<div class="input-group" style="float:right;margin-right:25px;">
+       			<input type="search" id='search' placeholder="Search..." class="form-control" style="width:470px;"/>
+       			<div class="input-group-btn" style="float:left;">
+           			<button class="btn btn-info" id="search1" onclick="fun()">
+           				<span class="glyphicon glyphicon-search"></span>
+           			</button>
+      			</div>
+      			<script>
+      				function fun()
+      				{
+      					var str=document.getElementById("search").value;
+      					window.location.href ="mobile.html?search="+str;
+      				}
+      			</script>
+			</div>
+		</div>
+	</div>
+</div>
+<center>
+
+<div class="bs-example">
+    <div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active" ></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+            <li data-target="#myCarousel" data-slide-to="5"></li>
+            <li data-target="#myCarousel" data-slide-to="6"></li>
+        </ol>   
+        <div class="carousel-inner" id="slide">
+            <div class="active item" id="img1">
+                
+                <img src="image-1.jpg" style="width:100%;height:650px;"/>
+            </div>
+            <div class="item" id="img1">
+                  <img src="image-2.jpg" style="width:100%;height:650px;"/>
+            </div>
+            <div class="item" id="img1">
+                  <img src="image-3.jpg" style="width:100%;height:650px;"/>
+            </div>
+             <div class="item" id="img1">
+                  <img src="image-4.jpg" style="width:100%;height:650px;"/>
+            </div>
+             <div class="item" id="img1">
+                  <img src="image-5.jpg" style="width:100%;height:650px;"/>
+            </div>
+             <div class="item" id="img1">
+                  <img src="image-6.jpg" style="width:100%;height:650px;"/>
+            </div>
+            <div class="item" id="img1">
+                  <img src="image-7.jpg" style="width:100%;height:650px;"/>
+            </div>
+        </div>
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="carousel-control right" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+</div>
+
+</center>
+
+<div class="container">
+		<h1 align="center"><img src="prod.jpg" alt="" width="300" height="200" /></h1>
+        <div class="row">
+            
+            <div class="col-md-4" style=""width="300px;">
+            <br/><br/><br/>
+            	<a href="mobile.html" style="text-decoration:none;" ><img src="small1.jpg" alt="" width="100" height="70" />
+                <h4>MOBILES<br/></h4></a>
+                <p>Online mobile store for branded mobile phones at best prices in India. Check prices and user reviews. Shop for mobiles under 10000, 15000, 20000 and more. </p>
+            </div>
+            
+            <div class="col-md-4">
+            <br/><br/><br/>
+            	<a href="mobileaccessories.html" style="text-decoration:none;" ><img src="small3.jpg" alt="" width="100" height="70" />
+            	<h4>Mobile accessories<br/></h4></a>
+                <p>Buy mobile phone accessories online for smartphones, android phones, dual sim phones, touchscreen phones,earphones, headphones and more</p>
+            </div>
+            
+            <div class="col-md-4">
+            <br/><br/><br/>
+            	<a href="cameras.html" style="text-decoration:none;" ><img src="small2.jpg" alt="" width="100" height="70" />
+                <h4>Cameras</h4></a>
+                <p>Buy Cameras & Accessories in India at best prices. You will find the best brands in digital cameras, SLR Cameras only at Click2Buy.com. We provide Free Home Delivery & more</p>
+            </div>
+            
+            
+        </div>
+        <div class="row1">
+            <div class="col-md-6">
+            	<br/>
+                <h3>About Us</h3>
+                <p>Click To Buy is a leading destination for online shopping in India, offering some of the best prices and a completely hassle-free experience with options of paying through Cash on Delivery, Debit Card, Credit Card and Net Banking processed through secure and trusted gateways. Now shop for your favorite mobiles phones, mobile accessoriess, cameras and products from a host of other categories available. Some of the top selling mobile brands on the website are Samsung, HTC, Nokia, Sony, Canon, LG and GOOGLE.Get the best prices and the best online shopping experience every time, guaranteed.</p>
+            </div>
+            <div class="col-md-6">
+            <br/>
+                 <h3>Featured Products</h3>
+        			<img src="cam1.jpg" alt="" width="200" height="150" />
+        			<img src="small1.jpg" alt="" width="200" height="150" />
+            </div>
+            
+</div>
+</div>
+<div class="container">
+        <div class="row2">
+            <div class="col-md-12">
+                <div class="well">
+                    
+                    <a href="#"> <i class="largeIcon icon-android"></i> </a>
+                    <a href="#"> <i class="largeIcon icon-linkedin"></i></a>
+                    <a href="#"> <i class="largeIcon icon-twitter"></i></a>
+                    <a href="#"> <i class="largeIcon icon-youtube"></i></a>
+                    <a href="#"> <i class="largeIcon icon-skype"></i></a>
+                    <a href="#"> <i class="largeIcon icon-google-plus"></i></a>
+                    <a href="#"> <i class="largeIcon icon-apple"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+</div>
+<div class="container">
+	<div class="row3">
+	    <div class="col-md-12">              
+	        <hr/>
+	        <p>Copyright &copy; Click2buy.
+	            <a data-toggle="modal" href="#myterms">Terms and Conditions</a>
+	        </p>
+	        <!-- Modal -->
+	        <div class="modal fade" id="myterms" tabinex="-1" role="dialog" aria-hidden="true">
+	            <div class="modal-dialog">
+	                <div class="modal-content">
+	                    <div class="modal-header">
+	                        <h3>Terms and Conditions</h3>
+	                    </div>
+	                    <div class="modal-body">
+	                        <p>The text will go here.....</p>
+	                    </div>
+	                    <div class="modal-footer">
+	                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	        
+	    </div>
+	</div>
+</div>
+
+
+</body>
+</html>

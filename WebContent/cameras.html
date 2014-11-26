@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Click2Buy</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.cycle.all.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#slideshow').cycle({
+        fx:     'fade',
+        speed:  'slow',
+        timeout: 5000,
+        pager:  '#slider_nav',
+        pagerAnchorBuilder: function(idx, slide) {
+            // return sel string for existing anchor
+            return '#slider_nav li:eq(' + (idx) + ') a';
+        }
+    });
+});
+</script>
+
+</head>
+<body>
+<div class="main">
+  <div class="header_resize">
+    <div class="header">
+      <div class="logo"><a href="#"><img src="logo.png" width="338" height="70" border="0" alt="" /></a></div>
+      <div class="menu">
+        <ul>
+          <li><a href="index.html" ><span>Home</span></a></li>
+          <li><a href="registration.html"><span>Register </span></a></li>
+          <li><a href="login.html"><span> Login</span></a></li>
+          <li><a href="shoppingcart.html"><span>AddToCart</span></a></li>
+          <li><a href="contactUs.html"><span> Contact Us</span></a></li>
+        </ul>
+      </div>
+      <div class="clr"></div>
+      <div class="clr"></div>
+    </div>
+  </div>
+ <div> 
+ 	<div  class="leftdiv">
+ 		<div class="menu_simple">
+ 		<ul>
+ 			<li>
+ 				<a href="#" id='head'>TYPE</a>
+ 				<div class="menu_simple">
+				<ul>
+					<li><a href="#">Point & Shoot</a></li>
+					<li><a href="#">DSLR</a></li>
+					<li><a href="#">Camcorder</a></li>
+					<li><a href="#">Low Cost</a></li>
+					<li><a href="#">Mirrorless</a></li>
+					<li><a href="#">Sports & Action</a></li>
+				</ul>
+				</div>
+ 			</li>
+ 			<li>
+ 			<a href="#" id='head'>CAMERAS IN PRICE RANGE</a>
+ 			<div class="menu_simple">
+				<ul>
+					<li><a href="#">Rs.5000 and Below</a></li>
+					<li><a href="#">Rs.5001 - Rs.10000</a></li>
+					<li><a href="#">Rs.10001 - Rs.15000</a></li>
+					<li><a href="#">Rs.15001 - Rs.20000</a></li>
+					<li><a href="#">Rs.20001 - Rs. 30000</a></li>
+					<li><a href="#">Rs.30001 and Above</a></li>
+				</ul>
+				</div>
+			</li>
+ 			<li>
+ 			<a href="#" id='head'>CAMERA BRANDS</a>
+ 			<div class="menu_simple">
+				<ul>
+					<li><a href="#">Nikon</a></li>
+					<li><a href="#">Canon</a></li>
+					<li><a href="#">Sony</a></li>
+					<li><a href="#">Panasonic</a></li>
+					<li><a href="#">Fujifilm</a></li>
+					<li><a href="#">Olympus</a></li>
+					<li><a href="#">Samsung</a></li>
+					<li><a href="#">All</a></li>
+				</ul>
+				</div>
+ 			</li>
+ 		</ul>
+
+		</div>
+	</div>
+	<div class="rightdiv">
+		<h2>CAMERAS</h2>
+		<hr></hr>
+		<div class="prod1">
+		<a href="#" style="text-decoration:none">
+			<img src="nikon.jpeg" width="100" height="150"></img><br>
+			<span>
+Nikon D5100 DSLR Camera<br>
+(Body with AF-S 18-55 mm VR Lens) <br></a>
+			Rs.26,999<br>------------------------<br> EMI from Rs. 1,231<br>------------------------
+			<br>
+			* 16.2 Megapixels
+			<br>
+			* CMOS
+			<br>
+			* with 3 inch LCD
+			<br>
+			
+			</span>
+		</div>
+		<div class="prod1">
+		<a href="#" style="text-decoration:none">
+			<img src="canon.jpeg" width="100" height="150"></img><br>
+			<span>Canon EOS 60D DSLR Camera<br>
+(Black, Body with EF-S 18-55 mm Lens) <br></a>
+			Rs.45,999<br>------------------------<br>
+			* 18 Megapixels<br>
+			* CMOS<br>
+			* Interchangeable lens<br>
+			* with 3 inch LCD<br>
+			</span>
+		</div>
+	</div>
+</div>
+  <div class="clr"></div>
+  <div class="footer">
+    <div class="footer_resize">
+      <p class="leftt">© Copyright Click To Buy. All Rights Reserved<br />
+        <a href="#">Click2Buy</a> | <a href="#">ContactUs</a> | <a href="#">MSIT</a></p>
+      
+      <div class="clr"></div>
+    </div>
+    <div class="clr"></div>
+  </div>
+</div>
+
+</html>

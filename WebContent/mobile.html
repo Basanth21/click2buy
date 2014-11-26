@@ -1,0 +1,973 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Click2Buy</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.cycle.all.min.js"></script>
+<link type="text/css" rel="stylesheet" href="index/css/bootstrap.css"/>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+ <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"/>
+<script src="prod.json"></script>
+<script src="js/angular.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<style type="text/css">
+.navbar {   	
+   	background-image: url("banner.png");
+	background-size:cover;
+	background-repeat: no-repeat;
+    height: 65px;
+    text-align: right;
+}
+.navbar-nav {
+	display: inline-block;
+	float: none;
+	
+	vertical-align: middle;
+	padding: 13px;
+}
+h2{
+    margin: 0px;     
+    color: #666;
+    padding-top: 90px;
+    font-size: 52px;
+    font-family: "trebuchet ms", sans-serif;    
+}
+.item{
+    background: #333;    
+    text-align: center;
+    height: 300px;
+}
+.carousel{
+    margin-top: 20px;
+}
+.bs-example{
+	float: center;
+	width: 730px;
+	height: 700px;
+
+}
+#backgroundimg {
+	background-image: url("header_block_bg.jpg");
+	background-size:cover;
+	height: 500px;
+	background-repeat: no-repeat;
+}
+.row {
+	background-color: #F3F3F3;
+	
+}
+.row#filter {
+	background-color: #F3F3F3;
+	width:200px;
+}
+#nav {
+    line-height:10px;
+    width:15%;
+    float:left;	 
+	position:relative;
+}
+#menu{
+	width:5%;
+	float:left;
+	position:relative;
+}
+#section {
+    width:75%;
+    float:left;
+
+    position:relative; 
+    font-size:10px;
+}
+.container#mobile{
+	width:100%;
+}
+td{
+	padding-right:10px;
+}
+</style>
+</head>
+<body>
+<div class="modal fade" id="myModal2" tabinex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4>Items in your Cart</h4>
+           </div>
+           <div class="modal-body">
+            <form>
+				<table>
+				<col width="200">
+				<col width="60">
+				<col width="140">
+				<col width="140">
+				<col width="140">
+				<tr><th><center>Item</center></th><th><center>QTY</center></th><th><center>Price</center></th><th><center>Delivery Details</center></th><th><center>Total</center></th>
+				</table><br/><br/>
+				<a href="payment.html" ><button type="submit" class="btn btn-success">Place Order</button></a>
+				<a href="index.html" style="text-decoration:none"><button type="reset" class="btn">Continue Shopping</button></a>
+		 </form>
+           </div>
+           <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+           </div>
+        </div>
+    </div>
+</div>
+<div class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="index.html" class="navbar-brand"><img src="logo.png" width="300" height="50" alt=""/></a>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li><a  href="index.html"><font color="white">HOME</font></a></li>
+				 <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" style='text-decoration:none;'><font color="white">Products</font> <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="mobile.html">Mobiles</a></li>
+                            <li><a href="mobileaccessories.html">Mobile Accessories</a></li>
+                            <li><a href="cameras.html">Cameras</a></li>
+                           
+                        </ul>
+                    </li>
+				<li><a data-toggle="modal" href="#myModal1"><font color="white">REGISTER</font></a></li>
+				<li><a data-toggle="modal" href="#myModal" ><font color="white">LOGIN</font></a></li>
+				<li><a data-toggle="modal" href="#myModal2"><font color="white">CART</font></a></li>
+				<li><a  href="#"><font color="white">CONTACT US</font></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div><br/><br/></div>
+<div><br/></div>
+<div>
+	<div id="nav" style="padding-left:10px;">
+		<div class="row" id="filter" >
+			<div class="span2" >
+			<br></br>
+				<ul class="nav nav-pills nav-stacked">
+					<li class="active"><a href="#">TOP BRANDS</a></li>
+					<li><a href="#" id="Sony">Sony</a></li>					
+					<li><a href="#" id="Samsung">Samsung</a></li>
+					<li><a href="#" id="Motorola">Motorola</a></li>
+					<li><a href="#" id="Micromax">Micromax</a></li>
+					<li><a href="#" id="Nokia">Nokia</a></li>
+					<li><a href="#" id="All">All</a></li>
+				</ul>
+				<script >
+				 $("#Sony").click( function()
+				 {
+					 $.getJSON('prod.json', function(data) {
+					        var output="";
+					       
+					         for (var i in data.prods) {
+					        	 var brand=data.prods[i].brand;
+					        	
+					        	 if(brand=="Sony")
+					        	{
+					        	 
+					            output+="<div class='col-md-3' id='mob'>"+
+					            			"<a href='product.html?id="+data.prods[i].id+"' style='text-decoration:none'>"+
+					            			"<img src='"+data.prods[i].image+"' width='80' height='150'/><br/>"+
+					            			"<label>" + data.prods[i].name + "</label></a><br/>"+
+					            			"<label> " + data.prods[i].price + "</label><br/>"+
+					            			"<label>------------------------</label><br/>" + 
+					            			"<label>* "+data.prods[i].feature1+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature2+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature3+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature4+"</label><br/>"+
+					            		"</div>";
+					        	}
+					        }
+					        document.getElementById("mob").innerHTML=output;
+					  });
+				    });
+				</script>
+				<script >
+				 $("#Samsung").click( function()
+				 {
+					 $.getJSON('prod.json', function(data) {
+					        var output="";
+					       
+					         for (var i in data.prods) {
+					        	 var brand=data.prods[i].brand;
+					        	
+					        	 if(brand=="Samsung")
+					        	{
+					        	 
+					            output+="<div class='col-md-3' id='mob'>"+
+					            			"<a href='product.html?id="+data.prods[i].id+"' style='text-decoration:none'>"+
+					            			"<img src='"+data.prods[i].image+"' width='80' height='150'/><br/>"+
+					            			"<label>" + data.prods[i].name + "</label></a><br/>"+
+					            			"<label> " + data.prods[i].price + "</label><br/>"+
+					            			"<label>------------------------</label><br/>" + 
+					            			"<label>* "+data.prods[i].feature1+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature2+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature3+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature4+"</label><br/>"+
+					            		"</div>";
+					        	}
+					        }
+					        document.getElementById("mob").innerHTML=output;
+					  });
+				    });
+				</script>
+				<script >
+				 $("#Motorola").click( function()
+				 {
+					 $.getJSON('prod.json', function(data) 
+							 {
+					        		var output="";
+					       
+					         for (var i in data.prods) {
+					        	 var brand=data.prods[i].brand;
+					        	
+					        	 if(brand=="Motorola")
+					        	{
+					        	 
+					            output+="<div class='col-md-3' id='mob'>"+
+					            			"<a href='product.html?id="+data.prods[i].id+"' style='text-decoration:none'>"+
+					            			"<img src='"+data.prods[i].image+"' width='80' height='150'/><br/>"+
+					            			"<label>" + data.prods[i].name + "</label></a><br/>"+
+					            			"<label> " + data.prods[i].price + "</label><br/>"+
+					            			"<label>------------------------</label><br/>" + 
+					            			"<label>* "+data.prods[i].feature1+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature2+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature3+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature4+"</label><br/>"+
+					            		"</div>";
+					        	}
+					        }
+					        document.getElementById("mob").innerHTML=output;
+					  });
+				    });
+				</script>
+				<script >
+				 $("#Nokia").click( function()
+				 {
+					 $.getJSON('prod.json', function(data) {
+					        var output="";
+					       
+					         for (var i in data.prods) {
+					        	 var brand=data.prods[i].brand;
+					        	
+					        	 if(brand=="Nokia")
+					        	{
+					        	 
+					            output+="<div class='col-md-3' id='mob'>"+
+					            			"<a href='product.html?id="+data.prods[i].id+"' style='text-decoration:none'>"+
+					            			"<img src='"+data.prods[i].image+"' width='80' height='150'/><br/>"+
+					            			"<label>" + data.prods[i].name + "</label></a><br/>"+
+					            			"<label> " + data.prods[i].price + "</label><br/>"+
+					            			"<label>------------------------</label><br/>" + 
+					            			"<label>* "+data.prods[i].feature1+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature2+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature3+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature4+"</label><br/>"+
+					            		"</div>";
+					        	}
+					        }
+					        document.getElementById("mob").innerHTML=output;
+					  });
+				    });
+				</script>
+				<script >
+				 $("#Micromax").click( function()
+				 {
+					 $.getJSON('prod.json', function(data) {
+					        var output="";
+					       
+					         for (var i in data.prods) {
+					        	 var brand=data.prods[i].brand;
+					        	
+					        	 if(brand=="Micromax")
+					        	{
+					        	 
+					            output+="<div class='col-md-3' id='mob'>"+
+					            			"<a href='product.html?id="+data.prods[i].id+"' style='text-decoration:none'>"+
+					            			"<img src='"+data.prods[i].image+"' width='80' height='150'/><br/>"+
+					            			"<label>" + data.prods[i].name + "</label></a><br/>"+
+					            			"<label> " + data.prods[i].price + "</label><br/>"+
+					            			"<label>------------------------</label><br/>" + 
+					            			"<label>* "+data.prods[i].feature1+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature2+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature3+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature4+"</label><br/>"+
+					            		"</div>";
+					        	}
+					        }
+					        document.getElementById("mob").innerHTML=output;
+					  });
+				    });
+				</script>
+				<script >
+				 $("#All").click( function()
+				 {
+					 $.getJSON('prod.json', function(data) {
+					        var output="";
+					       
+					         for (var i in data.prods) {
+					        	 var brand=data.prods[i].brand;
+					        	
+					        	
+					            output+="<div class='col-md-3' id='mob'>"+
+					            			"<a href='product.html?id="+data.prods[i].id+"' style='text-decoration:none'>"+
+					            			"<img src='"+data.prods[i].image+"' width='80' height='150'/><br/>"+
+					            			"<label>" + data.prods[i].name + "</label></a><br/>"+
+					            			"<label> " + data.prods[i].price + "</label><br/>"+
+					            			"<label>------------------------</label><br/>" + 
+					            			"<label>* "+data.prods[i].feature1+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature2+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature3+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature4+"</label><br/>"+
+					            		"</div>";
+					        	
+					        }
+					        document.getElementById("mob").innerHTML=output;
+					  });
+				    });
+				</script>
+				<ul class="nav nav-pills nav-stacked">
+					<li class="active"><a href="#">PRICE</a></li>
+					<li><a href="#" id="price1">Rs.2000 and Below</a></li>
+					<li><a href="#" id="price2">Rs.2001 - Rs.5000</a></li>
+					<li><a href="#" id="price3">Rs.5001 - Rs.10000</a></li>
+					<li><a href="#" id="price4">Rs.10001 - Rs.18000</a></li>
+					<li><a href="#" id="price5">Rs.18001 - Rs. 25000</a></li>
+					<li><a href="#" id="price6">Rs.25001 and Above</a></li>
+				</ul>
+				<script >
+				 $("#price1").click( function()
+				 {
+					 $.getJSON('prod.json', function(data) {
+					        var output="";
+					       
+					         for (var i in data.prods) {
+					        	 var price=data.prods[i].price;
+					        	 if(parseInt(price)<=2000)
+						        	{
+					        	
+					            output+="<div class='col-md-3' id='mob'>"+
+					            			"<a href='product.html?id="+data.prods[i].id+"' style='text-decoration:none'>"+
+					            			"<img src='"+data.prods[i].image+"' width='80' height='150'/><br/>"+
+					            			"<label>" + data.prods[i].name + "</label></a><br/>"+
+					            			"<label> " + data.prods[i].price + "</label><br/>"+
+					            			"<label>------------------------</label><br/>" + 
+					            			"<label>* "+data.prods[i].feature1+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature2+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature3+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature4+"</label><br/>"+
+					            		"</div>";
+						        	}
+					        	
+					        }
+					        document.getElementById("mob").innerHTML=output;
+					  });
+				    });
+				</script>
+				<script >
+				 $("#price2").click( function()
+				 {
+					 $.getJSON('prod.json', function(data) {
+					        var output="";
+					       
+					         for (var i in data.prods) {
+					        	 var price=data.prods[i].price;
+					        	 if(parseInt(price)>2000 && parseInt(price)<=5000 )
+						        	{
+					        	
+					            output+="<div class='col-md-3' id='mob'>"+
+					            			"<a href='product.html?id="+data.prods[i].id+"' style='text-decoration:none'>"+
+					            			"<img src='"+data.prods[i].image+"' width='80' height='150'/><br/>"+
+					            			"<label>" + data.prods[i].name + "</label></a><br/>"+
+					            			"<label>Rs. " + data.prods[i].price + "</label><br/>"+
+					            			"<label>------------------------</label><br/>" + 
+					            			"<label>* "+data.prods[i].feature1+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature2+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature3+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature4+"</label><br/>"+
+					            		"</div>";
+						        	}
+					        	
+					        }
+					        document.getElementById("mob").innerHTML=output;
+					  });
+				    });
+				</script>
+				<script >
+				$("#price3").click( function()
+						 {
+							 $.getJSON('prod.json', function(data) {
+							        var output="";
+							       
+							         for (var i in data.prods) {
+							        	 var price=data.prods[i].price;
+							        	 if(parseInt(price)>5000 && parseInt(price)<=10000)
+								        	{
+							        	
+							            output+="<div class='col-md-3' id='mob'>"+
+							            			"<a href='product.html?id="+data.prods[i].id+"' style='text-decoration:none'>"+
+							            			"<img src='"+data.prods[i].image+"' width='80' height='150'/><br/>"+
+							            			"<label>" + data.prods[i].name + "</label></a><br/>"+
+							            			"<label> " + data.prods[i].price + "</label><br/>"+
+							            			"<label>------------------------</label><br/>" + 
+							            			"<label>* "+data.prods[i].feature1+"</label><br/>"+
+							            			"<label>* "+data.prods[i].feature2+"</label><br/>"+
+							            			"<label>* "+data.prods[i].feature3+"</label><br/>"+
+							            			"<label>* "+data.prods[i].feature4+"</label><br/>"+
+							            		"</div>";
+								        	}
+							        	
+							        }
+							        document.getElementById("mob").innerHTML=output;
+							  });
+						    });
+				</script>
+				<script >
+				 $("#price4").click( function()
+				 {
+					 $.getJSON('prod.json', function(data) {
+					        var output="";
+					       
+					         for (var i in data.prods) {
+					        	 var price=data.prods[i].price;
+					        	 if(parseInt(price)>10000 && parseInt(price)<18000)
+						        	{
+					        	
+					            output+="<div class='col-md-3' id='mob'>"+
+					            			"<a href='product.html?id="+data.prods[i].id+"' style='text-decoration:none'>"+
+					            			"<img src='"+data.prods[i].image+"' width='80' height='150'/><br/>"+
+					            			"<label>" + data.prods[i].name + "</label></a><br/>"+
+					            			"<label> " + data.prods[i].price + "</label><br/>"+
+					            			"<label>------------------------</label><br/>" + 
+					            			"<label>* "+data.prods[i].feature1+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature2+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature3+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature4+"</label><br/>"+
+					            		"</div>";
+						        	}
+					        	
+					        }
+					        document.getElementById("mob").innerHTML=output;
+					  });
+				    });
+				</script>
+				<script >
+				 $("#price5").click( function()
+				 {
+					 $.getJSON('prod.json', function(data) {
+					        var output="";
+					       
+					         for (var i in data.prods) {
+					        	 var price=data.prods[i].price;
+					        	 if(parseInt(price)>18000 && parseInt(price)<=25000)
+						        	{
+					        	
+					            output+="<div class='col-md-3' id='mob'>"+
+					            			"<a href='product.html?id="+data.prods[i].id+"' style='text-decoration:none'>"+
+					            			"<img src='"+data.prods[i].image+"' width='80' height='150'/><br/>"+
+					            			"<label>" + data.prods[i].name + "</label></a><br/>"+
+					            			"<label> " + data.prods[i].price + "</label><br/>"+
+					            			"<label>------------------------</label><br/>" + 
+					            			"<label>* "+data.prods[i].feature1+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature2+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature3+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature4+"</label><br/>"+
+					            		"</div>";
+						        	}
+					        	
+					        }
+					        document.getElementById("mob").innerHTML=output;
+					  });
+				    });
+				</script>
+				<script >
+				 $("#price6").click( function()
+				 {
+					 
+					 $.getJSON('prod.json', function(data) {
+					        var output="";
+					       
+					         for (var i in data.prods) {
+					        	 var price=data.prods[i].price;
+					        	 if(parseInt(price)>25000)
+						        	{
+					        	
+					            output+="<div class='col-md-3' id='mob'>"+
+					            			"<a href='product.html?id="+data.prods[i].id+"' style='text-decoration:none'>"+
+					            			"<img src='"+data.prods[i].image+"' width='80' height='150'/><br/>"+
+					            			"<label>" + data.prods[i].name + "</label></a><br/>"+
+					            			"<label> " + data.prods[i].price + "</label><br/>"+
+					            			"<label>------------------------</label><br/>" + 
+					            			"<label>* "+data.prods[i].feature1+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature2+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature3+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature4+"</label><br/>"+
+					            		"</div>";
+						        	}
+					        	
+					        }
+					        document.getElementById("mob").innerHTML=output;
+					  });
+				    });
+				</script>
+				<ul class="nav nav-pills nav-stacked">
+					<li class="active"><a href="#">MOBILE TYPE</a></li>
+					<li><a href="#" id="smartphone1">Smartphones</a></li>
+					<li><a href="#" id="smartphone2">Feature Phones</a></li>
+				</ul>
+				<script >
+				 $("#smartphone1").click( function()
+				 {
+					 
+					 $.getJSON('prod.json', function(data) {
+					        var output="";
+					       
+					         for (var i in data.prods) {
+					        	 var type=data.prods[i].type;
+					        	 if(type=="smartphone")
+						        	{
+					        	
+					            output+="<div class='col-md-3' id='mob'>"+
+					            			"<a href='product.html?id="+data.prods[i].id+"' style='text-decoration:none'>"+
+					            			"<img src='"+data.prods[i].image+"' width='80' height='150'/><br/>"+
+					            			"<label>" + data.prods[i].name + "</label></a><br/>"+
+					            			"<label> " + data.prods[i].price + "</label><br/>"+
+					            			"<label>------------------------</label><br/>" + 
+					            			"<label>* "+data.prods[i].feature1+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature2+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature3+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature4+"</label><br/>"+
+					            		"</div>";
+						        	}
+					        	
+					        }
+					        document.getElementById("mob").innerHTML=output;
+					  });
+				    });
+				</script>
+				<script >
+				 $("#smartphone2").click( function()
+				 {
+					 
+					 $.getJSON('prod.json', function(data) {
+					        var output="";
+					       
+					         for (var i in data.prods) {
+					        	 var type=data.prods[i].type;
+					        	 if(type=="none")
+						        	{
+					        	
+					            output+="<div class='col-md-3' id='mob'>"+
+					            			"<a href='product.html?id="+data.prods[i].id+"' style='text-decoration:none'>"+
+					            			"<img src='"+data.prods[i].image+"' width='80' height='150'/><br/>"+
+					            			"<label>" + data.prods[i].name + "</label></a><br/>"+
+					            			"<label> " + data.prods[i].price + "</label><br/>"+
+					            			"<label>------------------------</label><br/>" + 
+					            			"<label>* "+data.prods[i].feature1+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature2+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature3+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature4+"</label><br/>"+
+					            		"</div>";
+						        	}
+					        	
+					        }
+					        document.getElementById("mob").innerHTML=output;
+					  });
+				    });
+				</script>
+				<ul class="nav nav-pills nav-stacked">
+					<li class="active"><a href="#">MOBILE OS</a></li>
+					<li><a href="#" id="os1">Android</a></li>
+					<li><a href="#" id="os2">Windows</a></li>
+					<li><a href="#" id="os3">iOS</a></li>
+					<li><a href="#" id="os4">Blackberry OS</a></li>
+					<li><a href="#" id="os5">All</a></li>
+				</ul>
+				<script >
+				 $("#os1").click( function()
+				 {
+					 
+					 $.getJSON('prod.json', function(data) {
+					        var output="";
+					       
+					         for (var i in data.prods) {
+					        	 var os=data.prods[i].os;
+					        	 if(os=="android")
+						        	{
+					        	
+					            output+="<div class='col-md-3' id='mob'>"+
+					            			"<a href='product.html?id="+data.prods[i].id+"' style='text-decoration:none'>"+
+					            			"<img src='"+data.prods[i].image+"' width='80' height='150'/><br/>"+
+					            			"<label>" + data.prods[i].name + "</label></a><br/>"+
+					            			"<label> " + data.prods[i].price + "</label><br/>"+
+					            			"<label>------------------------</label><br/>" + 
+					            			"<label>* "+data.prods[i].feature1+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature2+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature3+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature4+"</label><br/>"+
+					            		"</div>";
+						        	}
+					        	
+					        }
+					        document.getElementById("mob").innerHTML=output;
+					  });
+				    });
+				</script>
+				<script >
+				 $("#os2").click( function()
+				 {
+					 
+					 $.getJSON('prod.json', function(data) {
+					        var output="";
+					       
+					         for (var i in data.prods) {
+					        	 var os=data.prods[i].os;
+					        	 if(os=="windows")
+						        	{
+					        	
+					            output+="<div class='col-md-3' id='mob'>"+
+					            			"<a href='product.html?id="+data.prods[i].id+"' style='text-decoration:none'>"+
+					            			"<img src='"+data.prods[i].image+"' width='80' height='150'/><br/>"+
+					            			"<label>" + data.prods[i].name + "</label></a><br/>"+
+					            			"<label> " + data.prods[i].price + "</label><br/>"+
+					            			"<label>------------------------</label><br/>" + 
+					            			"<label>* "+data.prods[i].feature1+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature2+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature3+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature4+"</label><br/>"+
+					            		"</div>";
+						        	}
+					        	
+					        }
+					        document.getElementById("mob").innerHTML=output;
+					  });
+				    });
+				</script>
+				<script >
+				 $("#os3").click( function()
+				 {
+					 
+					 $.getJSON('prod.json', function(data) {
+					        var output="";
+					       
+					         for (var i in data.prods) {
+					        	 var os=data.prods[i].os;
+					        	 if(os=="iOS")
+						        	{
+					        	
+					            output+="<div class='col-md-3' id='mob'>"+
+					            			"<a href='product.html?id="+data.prods[i].id+"' style='text-decoration:none'>"+
+					            			"<img src='"+data.prods[i].image+"' width='80' height='150'/><br/>"+
+					            			"<label>" + data.prods[i].name + "</label></a><br/>"+
+					            			"<label> " + data.prods[i].price + "</label><br/>"+
+					            			"<label>------------------------</label><br/>" + 
+					            			"<label>* "+data.prods[i].feature1+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature2+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature3+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature4+"</label><br/>"+
+					            		"</div>";
+						        	}
+					        	
+					        }
+					        document.getElementById("mob").innerHTML=output;
+					  });
+				    });
+				</script>
+				<script >
+				 $("#os4").click( function()
+				 {
+					 
+					 $.getJSON('prod.json', function(data) {
+					        var output="";
+					       
+					         for (var i in data.prods) {
+					        	 var os=data.prods[i].os;
+					        	 if(os=="blackberry")
+						        	{
+					        	
+					            output+="<div class='col-md-3' id='mob'>"+
+					            			"<a href='product.html?id="+data.prods[i].id+"' style='text-decoration:none'>"+
+					            			"<img src='"+data.prods[i].image+"' width='80' height='150'/><br/>"+
+					            			"<label>" + data.prods[i].name + "</label></a><br/>"+
+					            			"<label> " + data.prods[i].price + "</label><br/>"+
+					            			"<label>------------------------</label><br/>" + 
+					            			"<label>* "+data.prods[i].feature1+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature2+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature3+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature4+"</label><br/>"+
+					            		"</div>";
+						        	}
+					        	
+					        }
+					        document.getElementById("mob").innerHTML=output;
+					  });
+				    });
+				</script>
+				<script >
+				 $("#os5").click( function()
+				 {
+					 
+					 $.getJSON('prod.json', function(data) {
+					        var output="";
+					       
+					         for (var i in data.prods) {
+					        	 
+					        	
+					            output+="<div class='col-md-3' id='mob'>"+
+					            			"<a href='product.html?id="+data.prods[i].id+"' style='text-decoration:none'>"+
+					            			"<img src='"+data.prods[i].image+"' width='80' height='150'/><br/>"+
+					            			"<label>" + data.prods[i].name + "</label></a><br/>"+
+					            			"<label> " + data.prods[i].price + "</label><br/>"+
+					            			"<label>------------------------</label><br/>" + 
+					            			"<label>* "+data.prods[i].feature1+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature2+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature3+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature4+"</label><br/>"+
+					            		"</div>";
+						        	
+					        	
+					        }
+					        document.getElementById("mob").innerHTML=output;
+					  });
+				    });
+				</script>
+				
+			</div>
+		</div>
+	</div>
+	<div id="section">
+			<h3>MOBILES</h3>
+			<div class="input-group">
+       			<input type="search" id='search' placeholder="Search..." class="form-control" style="width:500px;padding-right:10px;"/>
+       			<div class="input-group-btn" style="float:left;">
+           			<button class="btn btn-info" id="search1">
+           				<span class="glyphicon glyphicon-search">&nbsp;SEARCH</span>
+           			</button>
+       			</div>
+   			</div>
+   			<script >
+				 $("#search1").click( function()
+				 {
+					 
+					 $.getJSON('prod.json', function(data) {
+						
+					        var output="";
+					        var temp=document.getElementById("search").value;
+					    
+					         for (var i in data.prods) {
+					        	 
+					        	if(data.prods[i].name.toLowerCase().contains(temp.toLowerCase()))
+					        	{
+					        		
+					            	output+="<div class='col-md-3' id='mob'>"+
+					            			"<a href='product.html?id="+data.prods[i].id+"' style='text-decoration:none'>"+
+					            			"<img src='"+data.prods[i].image+"' width='80' height='150'/><br/>"+
+					            			"<label>" + data.prods[i].name + "</label></a><br/>"+
+					            			"<label> " + data.prods[i].price + "</label><br/>"+
+					            			"<label>------------------------</label><br/>" + 
+					            			"<label>* "+data.prods[i].feature1+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature2+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature3+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature4+"</label><br/>"+
+					            			"</div>";
+					        	}
+					        	else if(temp=="")
+					        	{
+					        		output+="<div class='col-md-3' id='mob'>"+
+			            			"<a href='product.html?id="+data.prods[i].id+"' style='text-decoration:none'>"+
+			            			"<img src='"+data.prods[i].image+"' width='80' height='150'/><br/>"+
+			            			"<label>" + data.prods[i].name + "</label></a><br/>"+
+			            			"<label> " + data.prods[i].price + "</label><br/>"+
+			            			"<label>------------------------</label><br/>" + 
+			            			"<label>* "+data.prods[i].feature1+"</label><br/>"+
+			            			"<label>* "+data.prods[i].feature2+"</label><br/>"+
+			            			"<label>* "+data.prods[i].feature3+"</label><br/>"+
+			            			"<label>* "+data.prods[i].feature4+"</label><br/>"+
+			            			"</div>";
+					        	}
+						        	
+					        	
+					        }
+					        document.getElementById("mob").innerHTML=output;
+					  });
+				    });
+				</script>
+			<br/>
+			<hr/>
+			<span style="float:right;" >
+				<select id="sort1">
+					<option >High to Low</option>
+					<option >Low to High</option>
+				</select>
+					<script>
+					$("#sort1").click( function()
+					{
+							$.getJSON('prod.json', function(data) {
+					        var output="";
+					        var myArray=[];
+					        for (var j in data.prods) 
+					   		{
+					        	myArray.push(parseInt(data.prods[j].price));
+					   		}
+					        myArray.sort();
+					        if(document.getElementById("sort1").value=="High to Low")
+						 	{
+					        	myArray.reverse();
+						 	}
+					        for (var k in myArray)
+				        	{
+					        	
+						        for (var i in data.prods) 
+						   		{	
+						        	if(myArray[k]==parseInt(data.prods[i].price))	
+						        	{
+						        		output+="<div class='col-md-3'>"+
+						            			"<a href='product.html?id="+data.prods[i].id+"' style='text-decoration:none'>"+
+						            			"<img src='"+data.prods[i].image+"' width='80' height='150'/><br/>"+
+						            			"<label>" + data.prods[i].name + "</label></a><br/>"+
+						            			"<label>Rs. " + data.prods[i].price + "</label><br/>"+
+						            			"<label>------------------------</label><br/>" + 
+						            			"<label>* "+data.prods[i].feature1+"</label><br/>"+
+						            			"<label>* "+data.prods[i].feature2+"</label><br/>"+
+						            			"<label>* "+data.prods[i].feature3+"</label><br/>"+
+						            			"<label>* "+data.prods[i].feature4+"</label><br/>"+
+						            			"<label></label><br/>"+
+						            			"</div>";
+						        	}
+						        }
+				        	}
+					        document.getElementById("mob").innerHTML=output;
+					  		});
+					 	
+							
+				});
+				</script>	
+				<select id="view">
+					<option >Grid View</option>
+					<option >List View</option>
+				</select>
+			</span>
+			<div class="container" id="mobile">
+				<div class="row" id="mob">				
+				<script>
+				$.getJSON('prod.json', function(data) {
+			        var output="";
+			        for (var i in data.prods) 
+			   		{
+			        	output+="<div class='col-md-3'>"+
+			            			"<a href='product.html?id="+data.prods[i].id+"' style='text-decoration:none'>"+
+			            			"<img src='"+data.prods[i].image+"' width='80' height='150'/><br/>"+
+			            			"<label>" + data.prods[i].name + "</label></a><br/>"+
+			            			"<label>Rs. " + data.prods[i].price + "</label><br/>"+
+			            			"<label>------------------------</label><br/>" + 
+			            			"<label>* "+data.prods[i].feature1+"</label><br/>"+
+			            			"<label>* "+data.prods[i].feature2+"</label><br/>"+
+			            			"<label>* "+data.prods[i].feature3+"</label><br/>"+
+			            			"<label>* "+data.prods[i].feature4+"</label><br/>"+
+			            			"<label></label><br/>"+
+			            		"</div>";
+			        }
+			        document.getElementById("mob").innerHTML=output;
+			  		});
+				</script>	
+					<script >
+					$("#view").click( function()
+					{
+						//alert("hiii");
+						//alert(document.getElementById("view").value);
+						if(document.getElementById("view").value=="Grid View")
+					 	{
+							//alert(document.getElementById("view").value);
+							$.getJSON('prod.json', function(data) {
+					        var output="";
+					        for (var i in data.prods) 
+					   		{
+					        	output+="<div class='col-md-3'>"+
+					            			"<a href='product.html?id="+data.prods[i].id+"' style='text-decoration:none'>"+
+					            			"<img src='"+data.prods[i].image+"' width='80' height='150'/><br/>"+
+					            			"<label>" + data.prods[i].name + "</label></a><br/>"+
+					            			"<label>Rs. " + data.prods[i].price + "</label><br/>"+
+					            			"<label>------------------------</label><br/>" + 
+					            			"<label>* "+data.prods[i].feature1+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature2+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature3+"</label><br/>"+
+					            			"<label>* "+data.prods[i].feature4+"</label><br/>"+
+					            			"<label></label><br/>"+
+					            		"</div>";
+					        }
+					        document.getElementById("mob").innerHTML=output;
+					  		});
+					 	}
+						if(document.getElementById("view").value=="List View")
+						{
+							$.getJSON('prod.json', function(data) {
+						        var output="";
+						        for (var i in data.prods) 
+						   		{
+						        	output+="<div class='col-md'>"+
+						            			"<table>"+
+						        					"<tr>"+
+						            				"<th rowspan='7' style='padding-right:40px;'><a href='product.html?id="+data.prods[i].id+"' style='text-decoration:none'>"+
+						            					 "<img src='"+data.prods[i].image+"' width='80' height='150'/>"+
+						            				"</th>"+
+						            				"<th style='padding-right:40px;'><label><a href='#' style='text-decoration:none'>" + data.prods[i].name + "</a></label></a></th></tr>"+
+						            			"<tr><td style='padding-right:40px;'><label>Rs. " + data.prods[i].price + "</label></td></tr>"+
+						            			"<tr><td style='padding-right:40px;'><label>------------------------</label><br/></td></tr>" + 
+						            			"<tr><td style='padding-right:40px;'><label>* "+data.prods[i].feature1+"</label></td></tr>"+
+						            			"<tr><td style='padding-right:40px;'><label>* "+data.prods[i].feature2+"</label></td></tr>"+
+						            			"<tr><td style='padding-right:40px;'><label>* "+data.prods[i].feature3+"</label></td></tr>"+
+						            			"<tr><td style='padding-right:40px;'><label>* "+data.prods[i].feature4+"</label></td></tr>"+
+						            			"<tr><td style='padding-right:40px;'><label></label><br/></td></tr>"+
+						            		"</table></div>";
+						        }
+						        document.getElementById("mob").innerHTML=output;
+						  		});
+						}
+					
+					});
+					</script>	
+					</div>				
+			</div>		
+	</div>
+</div>
+ <div class="container">
+        <div class="row3">
+            <div class="col-md-12">
+                <hr/>
+                <p>Copyright &copy; Click2buy.
+                    <a data-toggle="modal" href="#myterms">Terms and Conditions</a>
+                </p>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="myterms" tabinex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3>Terms and Conditions</h3>
+                            </div>
+                            <div class="modal-body">
+                                <p>The text will go here.....</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

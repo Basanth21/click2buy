@@ -1,0 +1,9 @@
+function create()
+{
+	var newDiv = document.createElement("div");
+	newDiv.id="h1";
+	newDiv.style.width="150px";
+	newDiv.Style.width="100px";
+	newDiv.Style.background="yellow";
+	document.body.appendChild(newDiv);
+}
